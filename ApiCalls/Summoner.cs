@@ -16,27 +16,26 @@ namespace LeagueApi.ApiCalls {
 
         public List<LeagueApi.Models.Summoner> GetSummonerByName(string SummonerNames) {
             var summonerList = new List<LeagueApi.Models.Summoner>();
-            List<string> summoners = SummonerNames.Split(',').ToList();
+            var summonerNameList = SummonerNames.Split(',').ToList();
             Models.Summoner summoner;
             
-            for ( int i = 0; i < summoners.Count; i++ ) {
-                if(this.memoryCache.TryGetValue("summoner-" + summoners[i], out summoner)) {
+            for ( int i = 0; i < summonerNameList.Count; i++ ) {
+                if(this.memoryCache.TryGetValue("summoner-" + summonerNameList[i], out summoner)) {
                     summonerList.Add(summoner);
-                    summoners.RemoveAt(i);
+                    summonerNameList.RemoveAt(i);
                 } 
             }
 
-            SummonerNames = String.Join(",", summoners);
-
+            SummonerNames = String.Join(",", summonerNameList);
             if(SummonerNames.Length > 3) {
                 var EndPoint = $"/v1.4/summoner/by-name/{SummonerNames}";
-                Task<string> Task = SendRequest(EndPoint);
+                var Task = SendRequest(EndPoint);
                 Task.Wait();
-                string stringResponse = Task.Result;
+                var stringResponse = Task.Result;
 
-                Dictionary<string, LeagueApi.Models.Summoner> Summoners =  JsonConvert.DeserializeObject<Dictionary<string, LeagueApi.Models.Summoner>>(stringResponse);
+                var summoners =  JsonConvert.DeserializeObject<Dictionary<string, LeagueApi.Models.Summoner>>(stringResponse);
 
-                foreach(KeyValuePair<string, LeagueApi.Models.Summoner> entry in Summoners)
+                foreach(KeyValuePair<string, LeagueApi.Models.Summoner> entry in summoners)
                 {
                     this.memoryCache.Set("summoner-" + entry.Key, entry.Value, 
                         new MemoryCacheEntryOptions()
