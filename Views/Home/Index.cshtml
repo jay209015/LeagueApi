@@ -1,29 +1,26 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-@model List<LeagueApi.Models.Summoner>
 
-<div class="row">
-    @foreach(var Summoner in Model)
-    {
-    <div class="col-md-4">
-        <div class="media summoner">
-            <div class="media-left icon">
-                <img class="media-object" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/profileicon/@(Summoner.profileIconId).png" />
-                <span class="badge">@Summoner.summonerLevel</span>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading">@Summoner.name</h4>
-                <small>@Summoner.getRevisionDate().ToString("MMMM dd, yyyy H:mm")</small>
-            </div>
-        </div>
-    </div>
-    }
+<div class="row" id="summoner-section">
+    
 </div>
-
-  <script>
-    var channel = pusher.subscribe('test_channel');
-    channel.bind('my_event', function(data) {
-      alert(data.message);
+@section scripts {
+<script>
+    jQuery(document).ready(function(){
+        var container = jQuery("#summoner-section");
+        var summoners = ["omnimotard","evauso", "officeladybarb"];
+        jQuery.each(summoners, function(index, summoner){
+            console.log(summoner);
+             jQuery.get("/summoner/byname/" + summoner, function(data){
+                 container.append(data);
+             });
+        });
+        
     });
-  </script>
+var channel = pusher.subscribe('test_channel');
+channel.bind('my_event', function(data) {
+    alert(data.message);
+});
+</script>
+}

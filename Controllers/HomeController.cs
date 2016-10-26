@@ -10,10 +10,7 @@ namespace LeagueApi.Controllers
     {
         public IActionResult Index()
         {
-            ViewData["BackgroundImage"] = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg";
-            ApiCalls.Summoner Api = new ApiCalls.Summoner();
-            List<Models.Summoner> Summoners = Api.GetSummonerByName("omnimotard,evauso,officeladybarb");
-            return View(Summoners);
+            return View();
         }
 
         public IActionResult About()
