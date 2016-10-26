@@ -1,0 +1,17 @@
+@{
+    Layout = null;
+ }
+ @model List<LeagueApi.Models.Summoner>
+     
+ <div class="col-md-4">
+    <div class="media summoner">
+        <div class="media-left icon">
+            <img class="media-object" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/profileicon/@(Summoner.profileIconId).png" />
+            <span class="badge">@Summoner.summonerLevel</span>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">@Summoner.name (@Summoner.id)</h4>
+            <div>revisionDate: @Summoner.revisionDate</div>
+        </div>
+    </div>
+</div>
