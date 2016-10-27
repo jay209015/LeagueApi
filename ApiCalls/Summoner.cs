@@ -15,7 +15,15 @@ namespace LeagueApi.ApiCalls {
 
         public List<LeagueApi.Models.Summoner> GetSummonerByName(string SummonerNames) {
             var summonerList = new List<LeagueApi.Models.Summoner>();
-            var summonerNameList = SummonerNames.Split(',').ToList();
+            var summonerNameList = new List<string>();
+
+            if (SummonerNames.IndexOf(',') != -1) {
+                summonerNameList = SummonerNames.Split(',').ToList();
+            } else {
+                summonerNameList = new List<string>();
+                summonerNameList.Add(SummonerNames);
+            }
+           
             Models.Summoner summoner;
             
             for ( int i = 0; i < summonerNameList.Count; i++ ) {
@@ -25,8 +33,8 @@ namespace LeagueApi.ApiCalls {
                 } 
             }
 
-            SummonerNames = String.Join(",", summonerNameList);
-            if(SummonerNames.Length > 3) {
+            if(summonerNameList.Count > 0) {
+                SummonerNames = String.Join(",", summonerNameList);
                 var EndPoint = $"/v1.4/summoner/by-name/{SummonerNames}";
                 var Task = SendRequest(EndPoint);
                 Task.Wait();
