@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 
 namespace LeagueApi.ApiCalls {
     public class Base {
-
         public string BaseUrl = "https://na.api.pvp.net/api/lol/na";
         public string ApiKey = "RGAPI-d6fbfa6e-b7da-4158-9980-2b3add3a37a7";
         public void main() {
