@@ -57,7 +57,7 @@ namespace LeagueApi
                 
                 routes.MapRoute(
                     name: "summoner",
-                    template: "{controller=Summoner}/{action=ByName}/{name}");
+                    template: "{controller=Summoner}/{action=ByName}/{id}");
 
                 routes.MapRoute(
                     name: "default",

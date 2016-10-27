@@ -5,7 +5,6 @@ using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Linq;
 
-
 namespace LeagueApi.ApiCalls {
     public class Summoner : Base {
         private IMemoryCache memoryCache;

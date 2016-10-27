@@ -10,16 +10,25 @@ namespace LeagueApi.Controllers
     public class SummonerController : Controller
     {
         private IMemoryCache memoryCache;
+
         public SummonerController(IMemoryCache memoryCache) 
         {
             this.memoryCache = memoryCache;
         }
-        public PartialViewResult ByName(string name)
+        public PartialViewResult ByName(string id)
         {
-            ApiCalls.Summoner Api = new ApiCalls.Summoner(this.memoryCache);
-            List<Models.Summoner> Summoners = Api.GetSummonerByName(name);
+            var api = new ApiCalls.Summoner(this.memoryCache);
+            var Summoners = api.GetSummonerByName(id);
 
             return PartialView(Summoners);
+        }
+
+        public PartialViewResult Details(int id)
+        {
+            var api = new ApiCalls.SummonerDetails(this.memoryCache);
+            var summonerDetails = api.GetSummonerDetails(id);
+
+            return PartialView(summonerDetails);
         }
     }
 }
