@@ -9,7 +9,7 @@
 <script>
     jQuery(document).ready(function(){
         var container = jQuery("#summoner-section");
-        var summoners = ["omnimotard","evauso", "officeladybarb"];
+        var summoners = ["omnimotard"];
         jQuery.each(summoners, function(index, summoner){
              jQuery.get("/summoner/byname/" + summoner, function(data){
                  container.append(data);

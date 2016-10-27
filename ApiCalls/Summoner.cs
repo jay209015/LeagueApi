@@ -32,16 +32,18 @@ namespace LeagueApi.ApiCalls {
                 Task.Wait();
                 var stringResponse = Task.Result;
 
-                var summoners =  JsonConvert.DeserializeObject<Dictionary<string, LeagueApi.Models.Summoner>>(stringResponse);
+                if(stringResponse.Length > 3) {
+                    var summoners =  JsonConvert.DeserializeObject<Dictionary<string, LeagueApi.Models.Summoner>>(stringResponse);
 
-                foreach(KeyValuePair<string, LeagueApi.Models.Summoner> entry in summoners)
-                {
-                    this.memoryCache.Set("summoner-" + entry.Key, entry.Value, 
-                        new MemoryCacheEntryOptions()
-                        .SetSlidingExpiration(TimeSpan.FromMinutes(30))
-                        .SetAbsoluteExpiration(TimeSpan.FromHours(1)));
+                    foreach(KeyValuePair<string, LeagueApi.Models.Summoner> entry in summoners)
+                    {
+                        this.memoryCache.Set("summoner-" + entry.Key, entry.Value, 
+                            new MemoryCacheEntryOptions()
+                            .SetSlidingExpiration(TimeSpan.FromMinutes(30))
+                            .SetAbsoluteExpiration(TimeSpan.FromHours(1)));
 
-                    summonerList.Add(entry.Value);
+                        summonerList.Add(entry.Value);
+                    }
                 }
             }
 
