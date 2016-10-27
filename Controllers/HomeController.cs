@@ -10,6 +10,7 @@ namespace LeagueApi.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["BackgroundImage"] = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg";
             return View();
         }
 

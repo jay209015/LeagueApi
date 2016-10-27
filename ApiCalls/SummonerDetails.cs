@@ -26,7 +26,7 @@ namespace LeagueApi.ApiCalls {
 
                 this.memoryCache.Set("summoner-details-" + summonerId, summonerDetails, 
                     new MemoryCacheEntryOptions()
-                    .SetSlidingExpiration(TimeSpan.FromMinutes(5))
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(30))
                     .SetAbsoluteExpiration(TimeSpan.FromHours(1)));
             } 
         

@@ -26,7 +26,7 @@ namespace LeagueApi.Controllers
         public PartialViewResult Details(int id)
         {
             var api = new ApiCalls.SummonerDetails(this.memoryCache);
-            var summonerDetails = api.GetSummonerDetails(id);
+            Models.PlayerStatsSummaryList summonerDetails = api.GetSummonerDetails(id);
 
             return PartialView(summonerDetails);
         }

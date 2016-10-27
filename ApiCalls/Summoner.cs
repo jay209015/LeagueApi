@@ -38,7 +38,7 @@ namespace LeagueApi.ApiCalls {
                 {
                     this.memoryCache.Set("summoner-" + entry.Key, entry.Value, 
                         new MemoryCacheEntryOptions()
-                        .SetSlidingExpiration(TimeSpan.FromMinutes(5))
+                        .SetSlidingExpiration(TimeSpan.FromMinutes(30))
                         .SetAbsoluteExpiration(TimeSpan.FromHours(1)));
 
                     summonerList.Add(entry.Value);

@@ -11,7 +11,6 @@
         var container = jQuery("#summoner-section");
         var summoners = ["omnimotard","evauso", "officeladybarb"];
         jQuery.each(summoners, function(index, summoner){
-            console.log(summoner);
              jQuery.get("/summoner/byname/" + summoner, function(data){
                  container.append(data);
              });
