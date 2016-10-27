@@ -27,7 +27,7 @@ namespace LeagueApi.ApiCalls {
         
                     return stringResponse;
                 }
-                catch (HttpRequestException e)
+                catch (HttpRequestException)
                 {
                     return "";
                 }
