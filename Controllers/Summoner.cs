@@ -16,21 +16,20 @@ namespace LeagueApi.Controllers
         {
             this.memoryCache = memoryCache;
         }
-        public PartialViewResult ByName(string id)
+        public JsonResult ByName(string id)
         {
             var api = new ApiCalls.Summoner(this.memoryCache);
-            var Summoners = api.GetSummonerByName(id);
+            var summoners = api.GetSummonerByName(id);
 
-            return PartialView(Summoners);
+            return Json(summoners);
         }
 
         public JsonResult Details(int id)
         {
             var api = new ApiCalls.SummonerDetails(this.memoryCache);
             Models.PlayerStatsSummaryList summonerDetails = api.GetSummonerDetails(id);
-            var response = JsonConvert.SerializeObject(summonerDetails);
 
-            return Json(response);
+            return Json(summonerDetails);
         }
     }
 }

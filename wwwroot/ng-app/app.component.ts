@@ -1,6 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Summoner } from './models/summoner';
+import { SummonerService } from './services/summoner.service'
+
 @Component({
   selector: 'my-app',
-  template: '<h1>Angular 2.0 Works</h1>'
+  templateUrl: '/ng-app/views/summoner/summoner.html',
+  providers: [SummonerService]
 })
-export class AppComponent { }
+export class AppComponent {
+  summoners: Summoner[];
+
+  constructor(private summonerService: SummonerService) { }
+
+  ngOnInit(): void {
+    this.getSummoners();
+  }
+
+  getSummoners(): void {
+    this.summonerService.getSummoners()
+      .then(summoners => this.summoners = summoners)
+      .then(summoners => this.getSummonerDetails(summoners));
+  }
+
+  getSummonerDetails(summoner: Summoner[]): void {
+    console.log('Get Details:');
+    console.log(summoner);
+  }
+ }

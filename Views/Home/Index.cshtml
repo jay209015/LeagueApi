@@ -2,24 +2,4 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="row" id="summoner-section">
-    
-</div>
-@section scripts {
-<script>
-    jQuery(document).ready(function(){
-        var container = jQuery("#summoner-section");
-        var summoners = ["omnimotard"];
-        jQuery.each(summoners, function(index, summoner){
-             jQuery.get("/summoner/byname/" + summoner, function(data){
-                 container.append(data);
-             });
-        });
-        
-    });
-var channel = pusher.subscribe('test_channel');
-channel.bind('my_event', function(data) {
-    alert(data.message);
-});
-</script>
-}
+<my-app>Loading...</my-app>
