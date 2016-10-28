@@ -6,6 +6,7 @@
         </div>
         <div class="media-body">
             <h4 class="media-heading">{{summoner.name}}</h4>
+            <div>{{ summoner.revisionDateTime | date : 'short' : '-0600' }}</div>
         </div>
     </div>
     <div id="summoner-details-{{summoner.id}}" class="clearfix"></div>

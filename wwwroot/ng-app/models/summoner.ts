@@ -4,4 +4,5 @@ export class Summoner {
     profileIconId: number;
     revisionDate: number;
     summonerLevel: number;
+    revisionDateTime: string;
 }

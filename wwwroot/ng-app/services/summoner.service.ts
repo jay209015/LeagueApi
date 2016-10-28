@@ -10,7 +10,7 @@ export class SummonerService {
 
     private headers = new Headers({'Content-Type': 'application/json'});
     getSummoners(): Promise<Summoner[]> {
-        const url = `/summoner/byname/omnimotard`;
+        const url = `/summoner/byname/omnimotard,officeladybarb,evauso`;
             return this.http
                 .get(url)
                 .toPromise()
