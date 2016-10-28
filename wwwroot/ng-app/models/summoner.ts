@@ -1,5 +1,5 @@
 export class Summoner {
-    id: number;
+    public id: number;
     name: string;
     profileIconId: number;
     revisionDate: number;

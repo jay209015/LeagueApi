@@ -1,0 +1,22 @@
+ <div class="table-responsive">
+    <table class="table table-bordered table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Kills</th>
+                <th>Assists</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="details">
+            <tr *ngFor="let playerStatSummaries of details.playerStatSummaries">
+                <td>{{ playerStatSummaries.playerStatSummaryType }}</td>
+                <td>{{ playerStatSummaries.wins }}</td>
+                <td>{{ playerStatSummaries.losses }}</td>
+                <td>{{ playerStatSummaries.aggregatedStats.totalChampionKills }}</td>
+                <td>{{ playerStatSummaries.aggregatedStats.totalAssists }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

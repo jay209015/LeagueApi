@@ -3,9 +3,12 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
-import { AppComponent }  from './app.component';
+import { AppComponent }  from './components/App.component';
+import { SummonerComponent }  from './components/Summoner.component';
+import { SummonerDetailsComponent }  from './components/SummonerDetails.component';
 import { SummonerService }  from './services/summoner.service';
 import { Summoner }  from './models/summoner';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -13,9 +16,13 @@ import { Summoner }  from './models/summoner';
     HttpModule,
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    SummonerComponent,
+    SummonerDetailsComponent
   ],
   providers: [ SummonerService ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ 
+    AppComponent
+  ]
 })
 export class AppModule { }

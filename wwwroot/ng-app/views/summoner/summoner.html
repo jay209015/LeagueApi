@@ -9,5 +9,5 @@
             <div>{{ summoner.revisionDateTime | date : 'short' : '-0600' }}</div>
         </div>
     </div>
-    <div id="summoner-details-{{summoner.id}}" class="clearfix"></div>
+    <summoner-details id="summoner-details-{{summoner.id}}" [summoner]="summoner" class="clearfix"></summoner-details>
 </div>

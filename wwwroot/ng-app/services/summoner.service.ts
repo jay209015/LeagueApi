@@ -1,6 +1,7 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
-import { Summoner } from '../models/summoner';
+import { Summoner } from '../models/Summoner';
+import { PlayerStatsSummaryList } from '../models/PlayerStatsSummaryList';
 import 'rxjs/add/operator/toPromise';
 
 
@@ -9,17 +10,32 @@ export class SummonerService {
     constructor(private http: Http) {}
 
     private headers = new Headers({'Content-Type': 'application/json'});
-    getSummoners(): Promise<Summoner[]> {
-        const url = `/summoner/byname/omnimotard,officeladybarb,evauso`;
-            return this.http
-                .get(url)
-                .toPromise()
-               .then(this.log)
-               .catch(this.handleError);;
+    getSummoners(summoners: string): Promise<Summoner[]> {
+        var url = '/summoner/byname';
+        return this.http
+            .get(url + '/' + summoners)
+            .toPromise()
+            .then(this.summonerResponse)
+            .catch(this.handleError);
     }
 
-    private log(response: Response) {
+    getSummonerDetails(summoner: Summoner): Promise<PlayerStatsSummaryList> {
+        var url = '/summoner/details';
+        return this.http
+            .get(url + '/' + summoner.id)
+            .toPromise()
+            .then(this.summonerDetailsResponse)
+            .catch(this.handleError);
+    }
+
+    private summonerResponse(response: Response) {
         let body = response.json() as Summoner[];
+        return body || {}
+    }
+
+    private summonerDetailsResponse(response: Response) {
+        let body = response.json() as PlayerStatsSummaryList;
+        console.log(body);
         return body || {}
     }
 
