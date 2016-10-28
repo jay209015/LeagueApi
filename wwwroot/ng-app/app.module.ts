@@ -8,6 +8,7 @@ import { SummonerComponent }  from './components/Summoner.component';
 import { SummonerDetailsComponent }  from './components/SummonerDetails.component';
 import { SummonerService }  from './services/summoner.service';
 import { Summoner }  from './models/summoner';
+import { PlayerStatSummaryTypePipe } from './pipes/PlayerStatSummaryType.pipe'
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { Summoner }  from './models/summoner';
   declarations: [
     AppComponent,
     SummonerComponent,
-    SummonerDetailsComponent
+    SummonerDetailsComponent,
+    PlayerStatSummaryTypePipe
   ],
   providers: [ SummonerService ],
   bootstrap: [ 

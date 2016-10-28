@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Summoner } from '../models/Summoner';
 import { SummonerService } from '../services/summoner.service'
 import { PlayerStatsSummaryList } from '../models/PlayerStatsSummaryList';
+import { PlayerStatSummaryTypePipe } from '../pipes/PlayerStatSummaryType.pipe';
 
 @Component({
   selector: 'summoner-details',
@@ -22,7 +23,6 @@ export class SummonerDetailsComponent {
   }
 
   getDetails(): void {
-    console.log(this.summoner);
     this.summonerService.getSummonerDetails(this.summoner)
       .then(details => this.details = details);
   }

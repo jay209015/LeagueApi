@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody *ngIf="details">
-            <tr *ngFor="let playerStatSummaries of details.playerStatSummaries">
+            <tr *ngFor="let playerStatSummaries of details.playerStatSummaries | playerStatSummaryType: ['CoopVsAI', 'Unranked', 'RankedSolo5x5']">
                 <td>{{ playerStatSummaries.playerStatSummaryType }}</td>
                 <td>{{ playerStatSummaries.wins }}</td>
                 <td>{{ playerStatSummaries.losses }}</td>

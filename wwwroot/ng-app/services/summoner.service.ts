@@ -35,7 +35,6 @@ export class SummonerService {
 
     private summonerDetailsResponse(response: Response) {
         let body = response.json() as PlayerStatsSummaryList;
-        console.log(body);
         return body || {}
     }
 
